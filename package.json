@@ -37,6 +37,7 @@
     "prettier": "^2.8.3",
     "prop-types": "^15.7.2",
     "ramda": "^0.28.0",
+    "start-server-and-test": "^2.0.0",
     "stop-only": "^3.3.1",
     "typescript": "^4.9.5"
   },
@@ -50,7 +51,11 @@
     "only": "stop-only --folder cypress/e2e --folder src",
     "only:warn": "stop-only --warn --folder cypress/e2e --folder src",
     "names": "find-cypress-specs --names",
-    "names:component": "find-cypress-specs --names --component"
+    "names:component": "find-cypress-specs --names --component",
+    "cy:open": "cypress open",
+    "cy:open-e2e": "server-test 3000 'cypress open --e2e --browser chrome'",
+    "cy:open-ct": "cypress open --component --browser chrome",
+    "cy:run-ct": "cypress run --component --browser chrome"
   },
   "browserslist": {
     "production": [

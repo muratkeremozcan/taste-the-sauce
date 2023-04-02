@@ -1,12 +1,3 @@
-// @ts-check
-
-// enables intelligent code completion for Cypress commands
-// https://on.cypress.io/intelligent-code-completion
-/// <reference types="cypress" />
-
-// https://github.com/bahmutov/cypress-map
-import 'cypress-map'
-
 // https://www.chaijs.com/plugins/chai-sorted/
 chai.use(require('chai-sorted'))
 

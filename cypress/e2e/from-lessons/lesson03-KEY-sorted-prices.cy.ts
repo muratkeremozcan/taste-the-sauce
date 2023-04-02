@@ -3,7 +3,6 @@
 /// <reference types="cypress" />
 
 // https://github.com/bahmutov/cypress-map
-import 'cypress-map'
 chai.use(require('chai-sorted'))
 
 it('sorts item by price', () => {

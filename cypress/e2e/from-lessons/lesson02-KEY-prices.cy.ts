@@ -2,27 +2,25 @@
 // https://on.cypress.io/intelligent-code-completion
 /// <reference types="cypress" />
 
-import "cypress-map";
-
-it("confirms the item with the lowest price", () => {
-  cy.visit("/");
+it('confirms the item with the lowest price', () => {
+  cy.visit('/')
   // Tip: grab the username and the password from the login page
   // It is ok for now to hardcode it in the spec source here
   //
   // get the username field and type the standard user
   // https://on.cypress.io/get
   // https://on.cypress.io/type
-  cy.get('[data-test="username"]').type("standard_user");
+  cy.get('[data-test="username"]').type('standard_user')
   // get the password field and type the password
-  cy.get('[data-test="password"]').type("secret_sauce");
+  cy.get('[data-test="password"]').type('secret_sauce')
   // get the login button and click on it
   // https://on.cypress.io/click
-  cy.get('[data-test="login-button"]').click();
+  cy.get('[data-test="login-button"]').click()
   // you should transition to the inventory page
   // https://on.cypress.io/location
   // see assertion examples at
   // https://glebbahmutov.com/cypress-examples/commands/location.html
-  cy.location("pathname").should("equal", "/inventory.html");
+  cy.location('pathname').should('equal', '/inventory.html')
   // once the inventory loads, grab the item prices
   // https://on.cypress.io/get
   // https://on.cypress.io/find
@@ -37,19 +35,19 @@ it("confirms the item with the lowest price", () => {
   // convert each price string into a Number
   // find the smallest price number using Cypress._.min
   // and confirm it is 7.99
-  cy.get(".inventory_item_price")
+  cy.get('.inventory_item_price')
     // .should('have.length.greaterThan', 3)
-    .map("innerText")
-    .mapInvoke("substring", 1)
+    .map('innerText')
+    .mapInvoke('substring', 1)
     .map(Number)
     .apply(Cypress._.min)
-    .should("eq", 7.99);
+    .should('eq', 7.99)
 
-  cy.get(".inventory_item_price")
-    .should("have.length.greaterThan", 3)
-    .then((prices) => Cypress._.map(prices, "innerText"))
+  cy.get('.inventory_item_price')
+    .should('have.length.greaterThan', 3)
+    .then((prices) => Cypress._.map(prices, 'innerText'))
     .then((prices) => Cypress._.map(prices, (price) => price.substring(1)))
     .then((prices) => Cypress._.map(prices, Number))
     .then(Cypress._.min)
-    .should("eq", 7.99);
-});
+    .should('eq', 7.99)
+})

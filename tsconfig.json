@@ -8,6 +8,7 @@
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
+    "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "paths": {
@@ -16,7 +17,7 @@
     }
   },
   "include": [
-    "cypress/support/component.js",
+    "cypress/support/component.tsx",
     "cypress/support/**/*.ts",
     "cypress/e2e/**/*.js",
     "cypress/e2e/**/*.ts",

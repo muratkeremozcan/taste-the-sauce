@@ -29,6 +29,12 @@ module.exports = defineConfig({
           password: 'secret_sauce',
         },
       },
+      {
+        coverage: {
+          quiet: true,
+
+        }
+      },
       // list the files and file patterns to watch
       'cypress-watch-and-reload': {
         watch: ['src/**'],

@@ -1,38 +1,5 @@
-// enables intelligent code completion for Cypress commands
-// https://on.cypress.io/intelligent-code-completion
-/// <reference types="cypress" />
-
-// https://github.com/bahmutov/cypress-map
-import 'cypress-map'
-import 'cypress-data-session'
-
 // https://www.chaijs.com/plugins/chai-sorted/
 chai.use(require('chai-sorted'))
-
-const login = (name: unknown, password: string) => {
-  cy.visit('/')
-  cy.get('[data-test="username"]').type(name as string)
-  cy.get('[data-test="password"]').type(password)
-  cy.get('[data-test="login-button"]').click()
-  cy.location('pathname').should('equal', '/inventory.html')
-}
-
-Cypress.Commands.add('dataSessionLogin', (name, password) => {
-  cy.dataSession({
-    name,
-    setup() {
-      login(name, password)
-      return cy.getCookie('session-username').should('exist')
-    },
-    recreate(userCookie: Partial<Cypress.SetCookieOptions> | undefined) {
-      // @ts-expect-error
-      cy.setCookie('session-username', userCookie.value, userCookie)
-      cy.visit('/inventory.html')
-      cy.location('pathname').should('equal', '/inventory.html')
-    },
-    shareAcrossSpecs: true,
-  })
-})
 
 describe('sorting', () => {
   beforeEach(() => {
