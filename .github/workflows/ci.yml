@@ -16,7 +16,7 @@ jobs:
     uses: bahmutov/cypress-workflows/.github/workflows/split.yml@v1
     with:
       # use 4 containers
-      n: 4
+      n: 7
       # check the spec types in the "build" step
       # since we don't have any specific build for our app
       # don't forget to start the application
