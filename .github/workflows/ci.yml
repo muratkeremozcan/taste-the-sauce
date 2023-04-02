@@ -1,11 +1,22 @@
 name: ci
-on: [push]
+on:
+  # run on branches and main
+  push:
+  # run this workflow every night at 3am
+  schedule:
+    - cron: '0 3 * * *'
+  # or when the user triggers it from GitHub Actions page
+  workflow_dispatch:
+
 jobs:
-  # run end-to-end tests using the standard workflow
+  # run end-to-end tests in parallel using the split workflow
   # https://github.com/bahmutov/cypress-workflows
+  # https://github.com/bahmutov/cypress-split
   e2e:
-    uses: bahmutov/cypress-workflows/.github/workflows/standard.yml@v1
+    uses: bahmutov/cypress-workflows/.github/workflows/split.yml@v1
     with:
+      # use 4 containers
+      n: 4
       # check the spec types in the "build" step
       # since we don't have any specific build for our app
       # don't forget to start the application
