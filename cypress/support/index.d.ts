@@ -11,6 +11,10 @@ declare namespace Cypress {
      */
     fillForm(selectorsValues: object): Chainable<JQuery<HTMLFormElement>>
 
+    fillFormInitial(selectorsValues: object): Chainable<JQuery<HTMLFormElement>>
+
+    dataSessionLogin(name: string, password: string)
+
     /**
      * Returns elements that have "data-test" attribute with the given value
      * @example
