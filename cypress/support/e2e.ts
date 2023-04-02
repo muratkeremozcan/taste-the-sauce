@@ -35,6 +35,7 @@ Cypress.Commands.add(
   },
 )
 
+/*
 Cypress.Commands.add(
   'fillFormInitial',
   { prevSubject: 'element' },
@@ -50,6 +51,15 @@ Cypress.Commands.add(
     // thus this command yields the form element!
   },
 )
+*/
+
+const login = (name: string, password: string) => {
+  cy.visit('/')
+  cy.get('[data-test="username"]').type(name)
+  cy.get('[data-test="password"]').type(password)
+  cy.get('[data-test="login-button"]').click()
+  cy.location('pathname').should('equal', '/inventory.html')
+}
 
 Cypress.Commands.add('dataSessionLogin', (name, password) => {
   cy.dataSession({
@@ -59,10 +69,21 @@ Cypress.Commands.add('dataSessionLogin', (name, password) => {
       return cy.getCookie('session-username').should('exist')
     },
     recreate(userCookie: Partial<Cypress.SetCookieOptions> | undefined) {
+      // @ts-expect-error
       cy.setCookie('session-username', userCookie.value, userCookie)
       cy.visit('/inventory.html')
       cy.location('pathname').should('equal', '/inventory.html')
     },
     shareAcrossSpecs: true,
   })
+})
+
+Cypress.Commands.add('sessionLogin', (name, password) => {
+  cy.session({ name, password }, () => login(name, password), {
+    validate: () => {
+      cy.getCookie('session-username').its('value').should('eq', name)
+    },
+    cacheAcrossSpecs: true,
+  })
+  return cy.visit('/inventory.html')
 })

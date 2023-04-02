@@ -15,6 +15,8 @@ declare namespace Cypress {
 
     dataSessionLogin(name: string, password: string)
 
+    sessionLogin(name: string, password: string)
+
     /**
      * Returns elements that have "data-test" attribute with the given value
      * @example
