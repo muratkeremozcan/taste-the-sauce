@@ -14,7 +14,7 @@ it('shows the select component', () => {
   ]
   const activeOption = 'a to z'
   const selectOption = cy.stub().as('selectOption')
-  const select = (e) => selectOption(e.target.value)
+  const select = (e) => cy.stub().as('selectOption')(e.target.value)
 
   // mount the Select component
   // passing options and the active option props
