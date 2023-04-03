@@ -13,7 +13,6 @@ it('shows the select component', () => {
     },
   ]
   const activeOption = 'a to z'
-  const selectOption = cy.stub().as('selectOption')
   const select = (e) => cy.stub().as('selectOption')(e.target.value)
 
   // mount the Select component
