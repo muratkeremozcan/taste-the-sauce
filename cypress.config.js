@@ -1,5 +1,7 @@
 const { defineConfig } = require('cypress')
 const registerDataSession = require('cypress-data-session/src/plugin')
+// https://github.com/bahmutov/cypress-on-fix
+const cypressOnFix = require('cypress-on-fix')
 // https://github.com/bahmutov/cypress-split
 const cypressSplit = require('cypress-split')
 const path = require('path')
@@ -34,13 +36,14 @@ module.exports = defineConfig({
         watch: ['src/**'],
       },
       coverage: {
-        quiet: true,
         exclude: ['**/src/service*.js'],
       },
     },
-    setupNodeEvents(on, config) {
+    setupNodeEvents(cypressOn, config) {
       // implement node event listeners here
       // and load any plugins that require the Node environment
+      // fix https://github.com/cypress-io/cypress/issues/22428
+      const on = cypressOnFix(cypressOn)
       cypressSplit(on, config)
       registerDataSession(on, config)
       // https://github.com/bahmutov/cypress-watch-and-reload
@@ -54,7 +57,9 @@ module.exports = defineConfig({
   },
 
   component: {
-    setupNodeEvents(on, config) {
+    setupNodeEvents(cypressOn, config) {
+      const on = cypressOnFix(cypressOn)
+      cypressSplit(on, config)
       // https://github.com/bahmutov/cypress-code-coverage
       require('@bahmutov/cypress-code-coverage/plugin')(on, config)
       // IMPORTANT to return the config object
