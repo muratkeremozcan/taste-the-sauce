@@ -13,7 +13,7 @@ jobs:
   # https://github.com/bahmutov/cypress-workflows
   # https://github.com/bahmutov/cypress-split
   e2e:
-    uses: bahmutov/cypress-workflows/.github/workflows/split.yml@v1
+    uses: bahmutov/cypress-workflows/.github/workflows/split.yml@v1.14.0
     with:
       # use 4 containers
       n: 7
@@ -25,11 +25,12 @@ jobs:
       build: npm run typecheck
       start: npm run start-18
       wait-on: 'http://127.0.0.1:3000'
+      coverage: true
 
   # in a separate job, run component tests
   # using the standard workflow
   # https://github.com/bahmutov/cypress-workflows
   components:
-    uses: bahmutov/cypress-workflows/.github/workflows/standard.yml@v1
+    uses: bahmutov/cypress-workflows/.github/workflows/standard.yml@v1.14.0
     with:
       component: true
