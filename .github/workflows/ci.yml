@@ -8,6 +8,10 @@ on:
   # or when the user triggers it from GitHub Actions page
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   # lesson 31 has a new job to combine all e2e and ct so that it can merge their coverage
   # # run end-to-end tests in parallel using the split workflow
