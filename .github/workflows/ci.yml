@@ -9,28 +9,58 @@ on:
   workflow_dispatch:
 
 jobs:
-  # run end-to-end tests in parallel using the split workflow
-  # https://github.com/bahmutov/cypress-workflows
-  # https://github.com/bahmutov/cypress-split
-  e2e:
-    uses: bahmutov/cypress-workflows/.github/workflows/split.yml@v1.14.0
+  # lesson 31 has a new job to combine all e2e and ct so that it can merge their coverage
+  # # run end-to-end tests in parallel using the split workflow
+  # # https://github.com/bahmutov/cypress-workflows
+  # # https://github.com/bahmutov/cypress-split
+  # e2e:
+  #   uses: bahmutov/cypress-workflows/.github/workflows/split.yml@v1.14.0
+  #   with:
+  #     # use 4 containers
+  #     n: 7
+  #     # check the spec types in the "build" step
+  #     # since we don't have any specific build for our app
+  #     # don't forget to start the application
+  #     # and wait for the "http://127.0.0.1:3000" to respond
+  #     # Note: GitHub Actions have Node v18 installed
+  #     build: npm run typecheck
+  #     start: npm run start-18
+  #     wait-on: 'http://127.0.0.1:3000'
+  #     coverage: true
+
+  # # in a separate job, run component tests
+  # # using the standard workflow
+  # # https://github.com/bahmutov/cypress-workflows
+  # components:
+  #   uses: bahmutov/cypress-workflows/.github/workflows/standard.yml@v1.14.0
+  #   with:
+  #     n: 2
+  #     component: true
+  #     coverage: true
+
+  checks:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+      # https://github.com/cypress-io/github-action
+      - name: Install 📦
+        uses: cypress-io/github-action@v5
+        with:
+          runTests: false
+      - name: Check types 🧹
+        run: npm run lint
+      - name: Catch it.only tests 🫴
+        run: npm run only
+
+  # run end-to-end and component tests in parallel
+  tests:
+    needs: checks
+    uses: bahmutov/cypress-workflows/.github/workflows/split.yml@v2
     with:
-      # use 4 containers
-      n: 7
-      # check the spec types in the "build" step
-      # since we don't have any specific build for our app
-      # don't forget to start the application
-      # and wait for the "http://127.0.0.1:3000" to respond
-      # Note: GitHub Actions have Node v18 installed
-      build: npm run typecheck
+      nE2E: 4 # use 4 containers for E2E tests
+      nComponent: 2 # use 2 containers for component tests
       start: npm run start-18
       wait-on: 'http://127.0.0.1:3000'
+      # merge E2E and component code coverage into a single report
       coverage: true
-
-  # in a separate job, run component tests
-  # using the standard workflow
-  # https://github.com/bahmutov/cypress-workflows
-  components:
-    uses: bahmutov/cypress-workflows/.github/workflows/standard.yml@v1.14.0
-    with:
-      component: true

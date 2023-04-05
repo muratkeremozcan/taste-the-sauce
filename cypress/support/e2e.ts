@@ -75,6 +75,7 @@ Cypress.Commands.add('dataSessionLogin', (name, password) => {
       cy.location('pathname').should('equal', '/inventory.html')
     },
     shareAcrossSpecs: true,
+    expires: 9_000, // assume that user cookie session is only valid for 10 seconds (per the code), so we want data session to expire too
   })
 })
 
