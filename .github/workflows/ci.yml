@@ -49,7 +49,7 @@ jobs:
         with:
           runTests: false
       - name: Check types 🧹
-        run: npm run lint
+        run: npm run typecheck
       - name: Catch it.only tests 🫴
         run: npm run only
 
