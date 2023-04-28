@@ -28,7 +28,7 @@
     "@types/node": "18.16.2",
     "@types/ramda": "0.29.0",
     "chai-sorted": "0.2.0",
-    "cypress": "12.10.0",
+    "cypress": "12.11.0",
     "cypress-data-session": "2.7.0",
     "cypress-map": "1.17.0",
     "cypress-on-fix": "^1.0.2",
