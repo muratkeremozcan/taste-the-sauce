@@ -26,7 +26,7 @@
     "@cypress/instrument-cra": "1.4.0",
     "@types/chai-sorted": "0.2.0",
     "@types/node": "18.16.3",
-    "@types/ramda": "0.29.0",
+    "@types/ramda": "0.29.1",
     "chai-sorted": "0.2.0",
     "cypress": "12.11.0",
     "cypress-data-session": "2.7.0",
