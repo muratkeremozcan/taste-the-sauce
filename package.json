@@ -25,7 +25,7 @@
     "@bahmutov/cypress-code-coverage": "2.6.1",
     "@cypress/instrument-cra": "1.4.0",
     "@types/chai-sorted": "0.2.1",
-    "@types/node": "18.17.18",
+    "@types/node": "18.17.19",
     "@types/ramda": "0.29.4",
     "chai-sorted": "0.2.0",
     "cypress": "12.17.4",
