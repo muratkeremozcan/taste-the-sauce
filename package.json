@@ -24,7 +24,7 @@
     "@babel/register": "7.21.0",
     "@bahmutov/cypress-code-coverage": "2.6.1",
     "@cypress/instrument-cra": "1.4.0",
-    "@types/chai-sorted": "0.2.1",
+    "@types/chai-sorted": "0.2.2",
     "@types/node": "18.18.5",
     "@types/ramda": "0.29.5",
     "chai-sorted": "0.2.0",
