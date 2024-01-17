@@ -35,7 +35,7 @@
     "cypress-split": "1.5.0",
     "cypress-watch-and-reload": "1.10.12",
     "find-cypress-specs": "1.38.5",
-    "prettier": "3.2.2",
+    "prettier": "3.2.3",
     "prop-types": "15.8.1",
     "ramda": "0.29.0",
     "start-server-and-test": "2.0.3",
