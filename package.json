@@ -30,7 +30,7 @@
     "chai-sorted": "0.2.0",
     "cypress": "12.17.4",
     "cypress-data-session": "2.8.0",
-    "cypress-map": "1.24.0",
+    "cypress-map": "1.25.0",
     "cypress-on-fix": "^1.0.2",
     "cypress-split": "1.5.0",
     "cypress-watch-and-reload": "1.10.12",
