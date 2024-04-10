@@ -33,7 +33,7 @@
     "cypress-map": "1.27.0",
     "cypress-on-fix": "^1.0.2",
     "cypress-split": "1.5.0",
-    "cypress-watch-and-reload": "1.10.12",
+    "cypress-watch-and-reload": "1.10.13",
     "find-cypress-specs": "1.41.4",
     "prettier": "3.2.4",
     "prop-types": "15.8.1",
