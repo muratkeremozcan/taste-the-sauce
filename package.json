@@ -34,7 +34,7 @@
     "cypress-on-fix": "^1.0.2",
     "cypress-split": "1.5.0",
     "cypress-watch-and-reload": "1.10.13",
-    "find-cypress-specs": "1.41.4",
+    "find-cypress-specs": "1.43.1",
     "prettier": "3.2.5",
     "prop-types": "15.8.1",
     "ramda": "0.29.1",
